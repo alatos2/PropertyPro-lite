@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/style.css">
+    <title>PropertyPro-Lite::Post Property Advert</title>
+</head>
+<body>
+        <nav class="top-nav">
+            <div>
+                    PropertyPro-Lite
+            </div>
+            <input id="menu-toggle" type="checkbox" />
+            <label class='menu-button-container' for="menu-toggle">
+                <div class='menu-button'></div>
+            </label>
+            <ul class="menu">
+                <li><a href="index.html"><i class="fas fa-home"></i>  Home</a></li>
+                <li><a href="post.html"><i class="fa fa-plus-square"></i>  Post Property Advert</a></li>
+                <li><a href="../index.html" id="registerBtn"><i class="fa fa-sign-out"></i>   Log Out</a></li>
+            </ul>
+        </nav>
+    <div id="welcome" class="postAdvertDiv">Welcome <b>Rashford</b>,</div>
+
+    <div class="postAdvertDiv">
+        <h1><i class="fas fa-plus fa-lg fa-plus"></i> Post Advert</h1>
+            <p><input type="text" name="txtStatus" readonly value="Available"/></p>
+            <p><input type="text" name="txtAddress" placeholder="Address" /></p>
+            <p><input type="text" name="txtState" placeholder="State" /></p>
+            <p><input type="text" name="txtCity" placeholder="City" /></p>
+            <p><input type="text" name="txtType" placeholder="Type" /></p>
+            <p><input type="text" name="txtPrice" placeholder="Price" /></p>
+            <p><input type="file" name="fUpload" placeholder="Image"></p>
+            <p><input type="submit" id="modalBtn" value="Post Property Advert"></p>
+    </div>
+    <br><br><br><br><br><br><br>
+    <div id="Footer">copyright &copy; 2019 | PropertyPro-Lite </div>
+</body>
+</html>
+
+<div id="simpleModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="closeBtn">&times;</span>
+            <h2>Successful Operation</h2>
+          </div>
+          <div class="modal-body">
+            <p><b>Property Advert Successfully Posted</b></p>
+            <a href="post.html" class="logout-btn">Post Another Property Advert</a> | <a href="index.html"><i class="fas fa-home"></i> Home</a>
+          </div>
+          <div class="modal-footer">
+            <h3>PropertyPro-Lite © 2019</h3>
+          </div>
+        </div>
+      </div>
+
+  <script src="../assets/main.js"></script>
