@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/style.css">
+    <title>PropertyPro-Lite::Mark Property Advert</title>
+</head>
+<body>
+        <nav class="top-nav">
+            <div>
+                    PropertyPro-Lite
+            </div>
+            <input id="menu-toggle" type="checkbox" />
+            <label class='menu-button-container' for="menu-toggle">
+                <div class='menu-button'></div>
+            </label>
+            <ul class="menu">
+                <li><a href="index.html"><i class="fas fa-home"></i>  Home</a></li>
+                <li><a href="post.html"><i class="fa fa-plus-square"></i>  Post Advert</a></li>
+                <li><a href="../index.html" id="registerBtn"><i class="fa fa-sign-out"></i>   Log Out</a></li>
+            </ul>
+        </nav>
+    <div class="postAdvertDiv" id="welcome">Welcome <b>Rashford</b>,</div>
+
+    <div class="postAdvertDiv">
+        <h1><i class="fas fa-marker fa-lg fa-mark"></i> Mark Property Advert</h1>
+            <img src="../assets/img/wallpaper.jpg" alt="" height="450px" width="800px">
+            <p><b>Status:</b></p>
+            <p><select>
+                <option value="available">Available</option>
+                <option value="available">Sold</option>
+                </select>
+            </p>
+            <p><b>Address:</b></p>
+            <p><input type="text" name="txtAddress" placeholder="Address" readonly value="5, Orenuga close, Aduke Bus Stop"/></p>
+            <p><b>State:</b></p>
+            <p><input type="text" name="txtState" placeholder="State" readonly value="Lagos"/></p>
+            <p><b>City:</b></p>
+            <p><input type="text" name="txtCity" placeholder="City" readonly value="Alagbado"/></p>
+            <p><b>Property Type:</b></p>
+            <p><input type="text" name="txtType" placeholder="Type" readonly value="2 Bedroom Flat"/></p>
+            <p><b>Cost:</b></p>
+            <p><input type="text" name="txtPrice" placeholder="Price" readonly value="#125,000" /></p>
+            <p><input type="submit" value="Mark Property Advert" id="modalBtn"></p>
+    </div>
+    <br><br><br><br><br><br><br>
+    <div id="Footer">copyright &copy; 2019 | PropertyPro-Lite </div>
+</body>
+</html>
+
+<div id="simpleModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="closeBtn">&times;</span>
+            <h2>Successful Operation</h2>
+          </div>
+          <div class="modal-body">
+            <p><b>Property Advert Successfully Marked</b> | <a href="index.html"><i class="fas fa-home"></i> Home</a></p>
+          </div>
+          <div class="modal-footer">
+            <h3>PropertyPro-Lite © 2019</h3>
+          </div>
+        </div>
+      </div>
+
+  <script src="../assets/main.js"></script>
