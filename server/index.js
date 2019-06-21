@@ -2,6 +2,7 @@ import express from 'express';
 import Debug from 'debug';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import registerRoute from './routes/RegisterRoute';
 
 const app = express();
 
@@ -13,6 +14,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use(cors());
+
+app.use('/api/v1', registerRoute);
 
 dotenv.config();
 
