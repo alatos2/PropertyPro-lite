@@ -1,0 +1,42 @@
+{
+  "name": "propertypro-lite",
+  "version": "1.0.0",
+  "description": "Property Pro Lite is a platform where people can create and/or search properties for sale or rent.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "set DEBUG=http && nodemon --exec babel-node ./server/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alatos2/PropertyPro-lite.git"
+  },
+  "keywords": [
+    "property",
+    "agent",
+    "user",
+    "advert"
+  ],
+  "author": "Alabi Tosin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alatos2/PropertyPro-lite/issues"
+  },
+  "homepage": "https://github.com/alatos2/PropertyPro-lite#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "morgan": "^1.9.1",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1",
+    "nyc": "^14.1.1"
+  }
+}
