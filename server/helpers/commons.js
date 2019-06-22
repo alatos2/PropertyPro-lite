@@ -49,6 +49,16 @@ const utils = {
     const foundEmail = data.find(eachData => eachData.email === searchEmail);
     return foundEmail;
   },
+
+  /**
+   * @description validate password
+   * @param {string} password
+   * @param {string} hashpassword
+   * @returns {boolean} boolean
+   */
+  validatePassword(password, hashPassword) {
+    return bcrypt.compareSync(password, hashPassword);
+  },
 };
 
 export default utils;

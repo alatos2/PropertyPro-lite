@@ -44,12 +44,12 @@ const signup = (req, res) => {
 
   const userData = {
     id: uuid.v4(),
-    Email: email,
-    first_name: firstName,
-    last_name: lastName,
-    Password: utils.hashPassword(password),
-    phone_number: phoneNumber,
-    Address: address,
+    email,
+    firstName,
+    lastName,
+    password: utils.hashPassword(password),
+    phoneNumber,
+    address,
     IsAdmin: true,
   };
 
@@ -62,10 +62,10 @@ const signup = (req, res) => {
     data: {
       token,
       id: userData.id,
-      first_name: userData.first_name,
-      last_name: userData.last_name,
-      email: userData.Email,
-      address: userData.Address,
+      firstName,
+      lastName,
+      email,
+      address,
     },
   });
 };

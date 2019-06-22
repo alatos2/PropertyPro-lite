@@ -19,8 +19,17 @@ const validateRegister = (data) => {
   return Joi.validate(data, schema);
 };
 
+const validateLogin = (data) => {
+  const schema = {
+    email: Joi.string().email({ minDomainAtoms: 2 }).required(),
+    password: Joi.string().required().error(_error => ({ message: 'Password is required' })),
+  };
+  return Joi.validate(data, schema);
+};
+
 const validations = {
   validateRegister,
+  validateLogin,
 };
 
 export default validations;
