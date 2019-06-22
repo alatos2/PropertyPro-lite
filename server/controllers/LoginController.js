@@ -3,7 +3,9 @@ import utils from '../helpers/commons';
 import users from '../models/users';
 
 const signin = (req, res) => {
-  const { email, password } = req.body;
+  const {
+    email, password,
+  } = req.body;
 
   const result = validations.validateLogin(req.body);
 
