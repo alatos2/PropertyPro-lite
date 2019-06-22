@@ -27,9 +27,24 @@ const validateLogin = (data) => {
   return Joi.validate(data, schema);
 };
 
+
+const validateCreatePropertyAd = (data) => {
+  const schema = {
+    status: Joi.string().required().error(_error => ({ message: 'Status is required' })),
+    price: Joi.number().required(),
+    state: Joi.string().required().error(_error => ({ message: 'State is required' })),
+    city: Joi.string().required().error(_error => ({ message: 'City is required' })),
+    address: Joi.string().required().error(_error => ({ message: 'Address is required' })),
+    type: Joi.string().required().error(_error => ({ message: 'Type is required' })),
+    imageUrl: Joi.string().required().error(_error => ({ message: 'Image Url is required' })),
+  };
+  return Joi.validate(data, schema);
+};
+
 const validations = {
   validateRegister,
   validateLogin,
+  validateCreatePropertyAd,
 };
 
 export default validations;
