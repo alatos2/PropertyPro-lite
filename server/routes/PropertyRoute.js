@@ -7,6 +7,7 @@ import authentication from '../middlewares/verifications';
 const propertyRoute = express.Router();
 
 propertyRoute.get('/property/:id', getAll.specificPropertyAdvert);
+propertyRoute.get('/property-specific/:id?', getAll.specificPropertyAdvertType);
 propertyRoute.post('/property', authentication, createPropertyAd);
 propertyRoute.delete('/property/:id', authentication, deletePropertyAdvert);
 
