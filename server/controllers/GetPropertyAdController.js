@@ -53,9 +53,17 @@ const specificPropertyAdvertType = (req, res) => {
   });
 };
 
+const allPropertyAdverts = (req, res) => {
+  return res.status(200).json({
+    status: 200,
+    data: properties,
+  });
+};
+
 const getAll = {
   specificPropertyAdvert,
   specificPropertyAdvertType,
+  allPropertyAdverts,
 };
 
 export default getAll;
