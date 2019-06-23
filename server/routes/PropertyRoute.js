@@ -1,9 +1,11 @@
 import express from 'express';
 import createPropertyAd from '../controllers/CreatePropertyAdController';
+import deletePropertyAdvert from '../controllers/DeletePropertyController';
 import authentication from '../middlewares/verifications';
 
-const createRoute = express.Router();
+const propertyRoute = express.Router();
 
-createRoute.post('/property', authentication, createPropertyAd);
+propertyRoute.post('/property', authentication, createPropertyAd);
+propertyRoute.delete('/property/:id', authentication, deletePropertyAdvert);
 
-export default createRoute;
+export default propertyRoute;
