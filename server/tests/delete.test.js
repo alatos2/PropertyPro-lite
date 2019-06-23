@@ -64,5 +64,20 @@ describe('Delete Property Advert Controller', () => {
           done();
         });
     });
+    it('should delete a property data when token is valid and parameter correct', (done) => {
+      request(server)
+        .delete('/api/v1/property/2')
+        .set('Authorization', userToken)
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .end((err, res) => {
+          if (err) throw err;
+          else {
+            const responseData = JSON.parse(res.text);
+            expect(responseData).to.be.an('object');
+          }
+          done();
+        });
+    });
   });
 });
