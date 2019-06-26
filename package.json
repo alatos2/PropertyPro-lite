@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "nyc mocha ./server/tests/*.js --require @babel/register --exit",
-    "start:dev": "set DEBUG=http && nodemon --exec babel-node ./server/index"
+    "start:dev": "set DEBUG=http && nodemon --exec babel-node ./server/index",
+    "build": "npm run clean && npm run build-babel"
   },
   "repository": {
     "type": "git",
