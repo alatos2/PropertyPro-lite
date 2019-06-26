@@ -9,7 +9,7 @@ const propertyRoute = express.Router();
 
 propertyRoute.get('/property', getAll.allPropertyAdverts);
 propertyRoute.get('/property/:id', getAll.specificPropertyAdvert);
-propertyRoute.get('/property-specific/:id?', getAll.specificPropertyAdvertType);
+propertyRoute.get('/property-specific/?', getAll.specificPropertyAdvertType);
 propertyRoute.post('/property', authentication, createPropertyAd);
 propertyRoute.patch('/property/:id', authentication, modifyPropertyData.updatePropertyData);
 propertyRoute.patch('/property/:id/sold', authentication, modifyPropertyData.markPropertyData);

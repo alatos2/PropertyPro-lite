@@ -6,7 +6,7 @@ describe('GET Specific Property Adverts Type', () => {
   describe('test GET /api/v1/property-specific/:<property-id>', () => {
     it('should not get specific property adverts type if id cannot be found', (done) => {
       request(server)
-        .get('/api/v1/property-specific/123?duplex')
+        .get('/api/v1/property-specific?duplex')
         .expect('Content-Type', /json/)
         .expect(404)
         .end((err, res) => {
@@ -20,7 +20,7 @@ describe('GET Specific Property Adverts Type', () => {
     });
     it('should not get specific property adverts type if TYPE cannot be found', (done) => {
       request(server)
-        .get('/api/v1/property-specific/1?duplexes')
+        .get('/api/v1/property-specific?duplexes')
         .expect('Content-Type', /json/)
         .expect(404)
         .end((err, res) => {

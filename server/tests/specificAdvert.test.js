@@ -6,7 +6,7 @@ describe('GET Specific Property Adverts', () => {
   describe('test GET /api/v1/property/:<property-id>', () => {
     it('should get specific property adverts', (done) => {
       request(server)
-        .get('/api/v1/property/2')
+        .get('/api/v1/property/1')
         .expect('Content-Type', /json/)
         .expect(200)
         .end((err, res) => {

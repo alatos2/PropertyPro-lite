@@ -21,24 +21,10 @@ const specificPropertyAdvert = (req, res) => {
 
 const specificPropertyAdvertType = (req, res) => {
   const {
-    id,
-  } = req.params;
-
-  const {
     type,
   } = req.query;
 
-  const foundPropertyId = properties.find(property => id === property.id);
-  if (!foundPropertyId) {
-    return res.status(404).json({
-      status: 404,
-      error: 'Property Id does not exist',
-    });
-  }
-
-  const specificPropertyAds = properties.filter(property => id === property.id);
-
-  const specificPropertyAdsType = specificPropertyAds.filter(specificPropertyAd => type === specificPropertyAd.type);
+  const specificPropertyAdsType = properties.filter(property => type === property.type);
 
   if (specificPropertyAdsType === undefined || specificPropertyAdsType.length === 0) {
     return res.status(404).json({
@@ -53,12 +39,10 @@ const specificPropertyAdvertType = (req, res) => {
   });
 };
 
-const allPropertyAdverts = (req, res) => {
-  return res.status(200).json({
-    status: 200,
-    data: properties,
-  });
-};
+const allPropertyAdverts = (req, res) => res.status(200).json({
+  status: 200,
+  data: properties,
+});
 
 const getAll = {
   specificPropertyAdvert,

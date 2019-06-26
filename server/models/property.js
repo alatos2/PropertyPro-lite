@@ -2,7 +2,7 @@ import moment from 'moment';
 
 const properties = [
   {
-    id: '2',
+    id: '1',
     owner: '1',
     status: 'available',
     type: 'duplex',
@@ -11,7 +11,7 @@ const properties = [
     address: '25 Ogurinde Street',
     price: 25000.00,
     created_on: moment().format(),
-    image_url: 'https://res.cloudinary.com/daealmvag/image/upload/v1561056992/samples/people/boy-snow-hoodie.jpg',
+    image_url: 'https://res.cloudinary.com/daealmvag/image/upload/v1561569684/house2_kagcwz.jpg',
   },
   {
     id: '2',
@@ -23,10 +23,10 @@ const properties = [
     address: '25 Ogurinde Street',
     price: 25000.00,
     created_on: moment().format(),
-    image_url: 'https://res.cloudinary.com/daealmvag/image/upload/v1561056992/samples/people/boy-snow-hoodie.jpg',
+    image_url: 'https://res.cloudinary.com/daealmvag/image/upload/v1561569684/house1_r7ltr5.jpg',
   },
   {
-    id: '1',
+    id: '3',
     owner: '2',
     status: 'sold',
     type: '3 bedroom flat',
@@ -35,10 +35,10 @@ const properties = [
     address: '25 Ogurinde Street',
     price: 25000.00,
     created_on: moment().format(),
-    image_url: 'https://res.cloudinary.com/daealmvag/image/upload/v1561056992/samples/people/boy-snow-hoodie.jpg',
+    image_url: 'https://res.cloudinary.com/daealmvag/image/upload/v1561569685/house3_ah7w7f.jpg',
   },
   {
-    id: '1',
+    id: '4',
     owner: '2',
     status: 'sold',
     type: '2 bedroom flat',
@@ -47,7 +47,7 @@ const properties = [
     address: '25 Ogurinde Street',
     price: 25000.00,
     created_on: moment().format(),
-    image_url: 'https://res.cloudinary.com/daealmvag/image/upload/v1561056992/samples/people/boy-snow-hoodie.jpg',
+    image_url: 'https://res.cloudinary.com/daealmvag/image/upload/v1561569685/house3_ah7w7f.jpg',
   },
 ];
 
