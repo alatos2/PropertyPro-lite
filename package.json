@@ -1,34 +1,32 @@
 {
-  "name": "propertypro-lite",
+  "name": "lite",
   "version": "1.0.0",
-  "description": "Property Pro Lite is a platform where people can create and/or search properties for sale or rent.",
+  "description": "coming soon",
   "main": "index.js",
   "scripts": {
     "test": "nyc mocha ./server/tests/*.js --require @babel/register --exit",
     "start:dev": "set DEBUG=http && nodemon --exec babel-node ./server/index",
     "start": "node dist/index.js",
-    "build-heroku": "babel ./server -d dist",
-    "build": "npm run build-heroku",
+    "build-heroku": "babel ./server/docs --out-dir dist/docs --copy-files",
+    "build": "babel server -d dist && npm run build-heroku",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alatos2/PropertyPro-lite.git"
+    "url": "git+https://github.com/alatos2/lite.git"
   },
   "keywords": [
-    "property",
-    "agent",
-    "user",
-    "advert"
+    "property"
   ],
-  "author": "Alabi Tosin",
+  "author": "Tosin",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alatos2/PropertyPro-lite/issues"
+    "url": "https://github.com/alatos2/lite/issues"
   },
-  "homepage": "https://github.com/alatos2/PropertyPro-lite#readme",
+  "homepage": "https://github.com/alatos2/lite#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "debug": "^4.1.1",
     "dotenv": "^8.0.0",
@@ -37,6 +35,7 @@
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
     "morgan": "^1.9.1",
+    "swagger-ui-express": "^4.0.6",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
@@ -46,6 +45,7 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
     "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "coveralls": "^3.0.4",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
@@ -53,6 +53,7 @@
     "mocha": "^6.1.4",
     "nodemon": "^1.19.1",
     "nyc": "^14.1.1",
+    "superset": "^1.0.1",
     "supertest": "^4.0.2"
   }
 }
