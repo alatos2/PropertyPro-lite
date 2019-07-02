@@ -3,11 +3,11 @@
     "info": {
       "description": "Property Pro Lite is a platform where people can create and/or search properties for sale or rent.",
       "version": "1.0.0",
-      "title": "Lite"
+      "title": "PropertyPro-lite"
     },
     "servers": [
       {
-        "url": "https://lite-ts.herokuapp.com/api/v1"
+        "url": "https://propertypro-lite-ts.herokuapp.com/api/v1"
       }
     ],
     "tags": [
