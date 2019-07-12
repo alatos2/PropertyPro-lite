@@ -1,17 +1,18 @@
 import request from 'supertest';
 import { expect } from 'chai';
+import moment from 'moment';
 import server from '../index';
 import utils from '../helpers/commons';
 
 const testUser = {
   id: 1,
   email: 'drogba@gmail.com',
-  first_name: 'Didier',
-  last_name: 'Drogba',
+  firstName: 'Didier',
+  lastName: 'Drogba',
   password: utils.hashPassword('didier321'),
-  phone_number: '08124354643',
+  phoneNumber: '08124354643',
   address: 'ruxton street alagbado lagos',
-  is_admin: true,
+  isAdmin: true,
 };
 
 const userToken = utils.jwtToken(testUser);
@@ -22,7 +23,13 @@ describe('Update Property Data and also mark as SOLD if not available', () => {
       request(server)
         .patch('/api/v1/property/1')
         .send({
-          city: 'Ogbomosho',
+          status: 'available',
+          price: 29000.00,
+          state: 'Delta',
+          city: 'Umunede',
+          address: '25 Ajuebor street',
+          type: 'duplex',
+          imageUrl: 'https://res.cloudinary.com/daealmvag/image/upload/v1561569684/house2_kagcwz.jpg',
         })
         .set('Authorization', userToken)
         .expect('Content-Type', /json/)

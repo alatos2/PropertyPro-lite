@@ -1,36 +1,44 @@
 import moment from 'moment';
-import properties from '../models/property';
+import { updateProperty, updatePropertyStatus } from '../models/queries';
+import pool from '../models/database';
 
 const updatePropertyData = (req, res) => {
-  const {
-    status, type, state, city, address, price, imageUrl,
-  } = req.body;
+  try {
+    const {
+      status, type, state, city, address, price, imageUrl,
+    } = req.body;
 
-  const { id } = req.params;
+    const { id } = req.params;
 
-  const found = properties.find(property => property.id === id);
+    pool.connect((err, client, done) => {
+      client.query(updateProperty(status, price, state, city, address, type, moment().format(), imageUrl, id), (error, result) => {
+        done();
+        if (result.rowCount === 0) {
+          return res.status(404).json({
+            status: 404,
+            error: 'Property Id does not exist',
+          });
+        }
 
-  if (!found) {
-    return res.status(404).json({
-      status: 404,
-      error: 'Property Id does not exist',
+        return res.status(200).json({
+          status: 200,
+          data: {
+            id,
+            status,
+            type,
+            state,
+            city,
+            address,
+            price,
+            created_on: moment().format(),
+            imageUrl,
+          },
+        });
+      });
     });
+  } catch (e) {
+    return res.status(500).json({ status: 500, error: 'Server Error' });
   }
-
-  return res.status(200).json({
-    status: 200,
-    data: {
-      id,
-      status,
-      type,
-      state,
-      city,
-      address,
-      price,
-      created_on: moment().format(),
-      imageUrl,
-    },
-  });
 };
 
 const markPropertyData = (req, res) => {
