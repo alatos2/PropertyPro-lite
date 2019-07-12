@@ -55,7 +55,7 @@ describe('Register Controller', () => {
       request(server)
         .post('/api/v1/auth/signup')
         .send({
-          email: 'drogba@gmail.com',
+          email: 'dehinde@gmail.com',
           firstName: 'Tosin',
           lastName: 'Alabi',
           password: 'didier321',
@@ -247,7 +247,7 @@ describe('Register Controller', () => {
           password: 'didier321',
           confirmPassword: 'didier321',
           phoneNumber: '08137733203',
-          address: 'Nnamani Adewusi Street',
+          address: '11 Nnamani Adewusi Street',
         })
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
