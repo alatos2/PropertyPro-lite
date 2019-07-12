@@ -1,278 +1,215 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-      "description": "Property Pro Lite is a platform where people can create and/or search properties for sale or rent.",
-      "version": "1.0.0",
-      "title": "PropertyPro-lite"
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Property Pro Lite is a platform where people can create and/or search properties for sale or rent.",
+    "version": "1.0.0",
+    "title": "Lite"
+  },
+  "servers": [
+    {
+      "url": "https://propertypro-lite-ts.herokuapp.com/api/v1"
+    }
+  ],
+  "tags": [
+    {
+      "name": "User (Agent)",
+      "description": "All actions by Agent"
     },
-    "servers": [
-      {
-        "url": "https://propertypro-lite-ts.herokuapp.com/api/v1"
-      }
-    ],
-    "tags": [
-      {
-        "name": "User (Agent)",
-        "description": "All actions by Agent"
-      },
-      {
-        "name": "User",
-        "description": "All actions by User"
-      }
-    ],
-    "paths": {
-      "/auth/signup": {
-        "post": {
-          "tags": [
-            "User"
-          ],
-          "summary": "Register a new user",
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "firstName",
-                    "lastName",
-                    "email",
-                    "address",
-                    "phoneNumber",
-                    "password",
-                    "confirmPassword"
-                  ],
-                  "properties": {
-                    "firstName": {
-                      "type": "string",
-                      "minLength": 4
-                    },
-                    "lastName": {
-                      "type": "string",
-                      "minLength": 4
-                    },
-                    "email": {
-                      "type": "string",
-                      "minLength": 4,
-                      "pattern": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/"
-                    },
-                    "phoneNumber": {
-                      "type": "string",
-                      "minLength": 4
-                    },
-                    "address": {
-                      "type": "string",
-                      "minLength": 4
-                    },
-                    "password": {
-                      "type": "string",
-                      "minLength": 4
-                    },
-                    "confirmPassword": {
-                      "type": "string",
-                      "minLength": 4
-                    }
+    {
+      "name": "User",
+      "description": "All actions by User"
+    }
+  ],
+  "paths": {
+    "/auth/signup": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Register a new user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "firstName",
+                  "lastName",
+                  "email",
+                  "address",
+                  "phoneNumber",
+                  "password",
+                  "confirmPassword",
+                  "isAdmin"
+                ],
+                "properties": {
+                  "firstName": {
+                    "type": "string",
+                    "minLength": 4
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "minLength": 4
+                  },
+                  "email": {
+                    "type": "string",
+                    "minLength": 4,
+                    "pattern": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/"
+                  },
+                  "phoneNumber": {
+                    "type": "string",
+                    "minLength": 4
+                  },
+                  "address": {
+                    "type": "string",
+                    "minLength": 4
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 4
+                  },
+                  "confirmPassword": {
+                    "type": "string",
+                    "minLength": 4
                   }
                 }
               }
-            }
-          },
-          "responses": {
-            "201": {
-              "description": "Successfully created",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/User"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Missing required parameter"
-            }
-          }
-        }
-      },
-      "/auth/signin": {
-        "post": {
-          "tags": [
-            "User"
-          ],
-          "summary": "Logs in a registered user",
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "email",
-                    "password"
-                  ],
-                  "properties": {
-                    "email": {
-                      "type": "string",
-                      "minLength": 4,
-                      "pattern": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/"
-                    },
-                    "password": {
-                      "type": "string",
-                      "minLength": 4
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Successful operation",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/User"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Missing required parameter"
-            },
-            "500": {
-              "description": "Server Error"
-            }
-          }
-        }
-      },
-      "/property": {
-        "post": {
-          "tags": [
-            "User (Agent)"
-          ],
-          "summary": "Creates a new property advert",
-          "security": [
-            {
-              "ApiKeyAuth": []
-            }
-          ],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "status",
-                    "type",
-                    "state",
-                    "city",
-                    "address",
-                    "price",
-                    "imageUrl"
-                  ],
-                  "properties": {
-                    "status": {
-                      "type": "string",
-                      "minLength": 4
-                    },
-                    "type": {
-                      "type": "string",
-                      "minLength": 4
-                    },
-                    "state": {
-                      "type": "string",
-                      "minLength": 4,
-                      "pattern": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/"
-                    },
-                    "city": {
-                      "type": "string",
-                      "minLength": 4
-                    },
-                    "address": {
-                      "type": "string",
-                      "minLength": 4
-                    },
-                    "price": {
-                      "type": "number",
-                      "minLength": 4
-                    },
-                    "imageUrl": {
-                      "type": "string",
-                      "minLength": 4
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "responses": {
-            "201": {
-              "description": "Successfully created",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Property"
-                  }
-                }
-              }
-            },
-            "400": {
-              "description": "Missing required parameter"
-            },
-            "500": {
-              "description": "Server Error"
             }
           }
         },
-        "get": {
-          "tags": [
-            "User"
-          ],
-          "summary": "Get all property advert",
-          "responses": {
-            "200": {
-              "description": "Successful operation",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Property"
+        "responses": {
+          "201": {
+            "description": "Successfully created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing required parameter"
+          }
+        }
+      }
+    },
+    "/auth/signin": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Logs in a registered user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "minLength": 4,
+                    "pattern": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/"
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 4
                   }
                 }
               }
-            },
-            "404": {
-              "description": "Property advert not found"
-            },
-            "500": {
-              "description": "Server Error"
             }
           }
-        }
-      },
-      "/property/{id}": {
-        "patch": {
-          "tags": [
-            "User (Agent)"
-          ],
-          "summary": "Updates property advert",
-          "security": [
-            {
-              "ApiKeyAuth": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "string"
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
               }
             }
-          ],
-          "requestBody": {
-            "required": true,
+          },
+          "400": {
+            "description": "Missing required parameter"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/property": {
+      "post": {
+        "tags": [
+          "User (Agent)"
+        ],
+        "summary": "Creates a new property advert",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "status",
+                  "type",
+                  "state",
+                  "city",
+                  "address",
+                  "price",
+                  "imageUrl"
+                ],
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "minLength": 4
+                  },
+                  "type": {
+                    "type": "string",
+                    "minLength": 4
+                  },
+                  "state": {
+                    "type": "string",
+                    "minLength": 4,
+                    "pattern": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/"
+                  },
+                  "city": {
+                    "type": "string",
+                    "minLength": 4
+                  },
+                  "address": {
+                    "type": "string",
+                    "minLength": 4
+                  },
+                  "price": {
+                    "type": "number",
+                    "minLength": 4
+                  },
+                  "imageUrl": {
+                    "type": "string",
+                    "minLength": 4
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successfully created",
             "content": {
               "application/json": {
                 "schema": {
@@ -281,124 +218,22 @@
               }
             }
           },
-          "responses": {
-            "200": {
-              "description": "Successful operation",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Property"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Access denied, no token provided"
-            },
-            "403": {
-              "description": "Forbidden: Access is denied"
-            },
-            "404": {
-              "description": "Property advert not found"
-            },
-            "500": {
-              "description": "Server Error"
-            }
-          }
-        },
-        "delete": {
-          "tags": [
-            "User (Agent)"
-          ],
-          "summary": "Delete property advert",
-          "security": [
-            {
-              "ApiKeyAuth": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Property advert successfully deleted"
-            },
-            "400": {
-              "description": "Property advert not found"
-            },
-            "403": {
-              "description": "Forbidden: Access is denied"
-            },
-            "500": {
-              "description": "Server Error"
-            }
-          }
-        },
-        "get": {
-          "tags": [
-            "User"
-          ],
-          "summary": "Updates property advert",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Successful operation",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Property"
-                  }
-                }
-              }
-            },
-            "404": {
-              "description": "Property advert not found"
-            },
-            "500": {
-              "description": "Server Error"
-            }
+          "400": {
+            "description": "Missing required parameter"
+          },
+          "500": {
+            "description": "Server Error"
           }
         }
       },
-      "/property/{id}/sold": {
-        "patch": {
-          "tags": [
-            "User (Agent)"
-          ],
-          "summary": "Mark property not available as sold",
-          "security": [
-            {
-              "ApiKeyAuth": []
-            }
-          ],
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "requestBody": {
-            "required": true,
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get all property advert",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
             "content": {
               "application/json": {
                 "schema": {
@@ -407,146 +242,312 @@
               }
             }
           },
-          "responses": {
-            "200": {
-              "description": "Successful operation",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Property"
-                  }
-                }
-              }
-            },
-            "401": {
-              "description": "Access denied, no token provided"
-            },
-            "403": {
-              "description": "Forbidden: Access is denied"
-            },
-            "404": {
-              "description": "Property advert not found"
-            },
-            "500": {
-              "description": "Server Error"
-            }
-          }
-        }
-      },
-      "/property-specific/": {
-        "get": {
-          "tags": [
-            "User"
-          ],
-          "summary": "Get all specific property advert type",
-          "parameters": [
-            {
-              "name": "type",
-              "in": "query",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Successful operation",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/Property"
-                  }
-                }
-              }
-            },
-            "404": {
-              "description": "Property advert type not found"
-            },
-            "500": {
-              "description": "Server Error"
-            }
+          "404": {
+            "description": "Property advert not found"
+          },
+          "500": {
+            "description": "Server Error"
           }
         }
       }
     },
-    "components": {
-      "securitySchemes": {
-        "ApiKeyAuth": {
-          "type": "apiKey",
-          "in": "header",
-          "name": "authorization"
-        }
-      },
-      "schemas": {
-        "User": {
-          "type": "object",
-          "properties": {
-            "token": {
-              "type": "string"
-            },
-            "id": {
-              "type": "string"
-            },
-            "firstName": {
-              "type": "string"
-            },
-            "lastName": {
-              "type": "string"
-            },
-            "email": {
-              "type": "string"
-            },
-            "password": {
-              "type": "string"
-            },
-            "confirmPassword": {
-              "type": "string"
-            },
-            "phoneNumber": {
-              "type": "string"
-            },
-            "isAdmin": {
-              "type": "boolean"
-            },
-            "address": {
+    "/property/{id}": {
+      "patch": {
+        "tags": [
+          "User (Agent)"
+        ],
+        "summary": "Updates property advert",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
               "type": "string"
             }
           }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Property"
+              }
+            }
+          }
         },
-        "Property": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "owner": {
-              "type": "string"
-            },
-            "status": {
-              "type": "string"
-            },
-            "price": {
-              "type": "number",
-              "format": "float"
-            },
-            "state": {
-              "type": "string"
-            },
-            "city": {
-              "type": "string"
-            },
-            "address": {
-              "type": "string"
-            },
-            "type": {
-              "type": "string"
-            },
-            "imageUrl": {
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Property"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Access denied, no token provided"
+          },
+          "403": {
+            "description": "Forbidden: Access is denied"
+          },
+          "404": {
+            "description": "Property advert not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User (Agent)"
+        ],
+        "summary": "Delete property advert",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
               "type": "string"
             }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Property advert successfully deleted"
+          },
+          "400": {
+            "description": "Property advert not found"
+          },
+          "403": {
+            "description": "Forbidden: Access is denied"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Updates property advert",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Property"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Property advert not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/property/{id}/sold": {
+      "patch": {
+        "tags": [
+          "User (Agent)"
+        ],
+        "summary": "Mark property not available as sold",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Property"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Property"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Access denied, no token provided"
+          },
+          "403": {
+            "description": "Forbidden: Access is denied"
+          },
+          "404": {
+            "description": "Property advert not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/property-specific/": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get all specific property advert type",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Property"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Property advert type not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "authorization"
+      }
+    },
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "confirmPassword": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "isAdmin": {
+            "type": "boolean"
+          },
+          "address": {
+            "type": "string"
+          }
+        }
+      },
+      "Property": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number",
+            "format": "float"
+          },
+          "state": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string"
           }
         }
       }
     }
   }
+}
