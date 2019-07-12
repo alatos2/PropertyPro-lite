@@ -56,10 +56,23 @@ const specificPropertyAdvertType = (req, res) => {
   }
 };
 
-const allPropertyAdverts = (req, res) => res.status(200).json({
-  status: 200,
-  data: properties,
-});
+const allPropertyAdverts = (req, res) => {
+  try {
+    pool.connect((err, client, done) => {
+      client.query(getProperties(), (error, result) => {
+        done();
+        const properties = result.rows;
+
+        return res.status(200).json({
+          status: 200,
+          data: properties,
+        });
+      });
+    });
+  } catch (e) {
+    return res.status(500).json({ status: 500, error: e });
+  }
+};
 
 const getAll = {
   specificPropertyAdvert,
