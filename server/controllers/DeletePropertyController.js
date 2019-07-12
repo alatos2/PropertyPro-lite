@@ -1,25 +1,36 @@
-import properties from '../models/property';
+import pool from '../models/database';
+import { deleteProperty } from '../models/queries';
 
 const deletePropertyAdvert = (req, res) => {
-  const { id } = req.params;
+  try {
+    const { id } = req.params;
 
-  const foundProperty = properties.find(property => property.id === id);
+    pool.connect((err, client, done) => {
+      client.query(deleteProperty(id), (error, result) => {
+        done();
+        if (!result) {
+          return res.status(404).json({
+            status: 404,
+            error: 'Property Id does not exist',
+          });
+        }
 
-  if (!foundProperty) {
-    return res.status(404).json({
-      status: 404,
-      error: 'Property Id does not exist',
+        if (result.rowCount === 0) {
+          return res.status(404).json({
+            status: 404,
+            error: 'Property Id does not exist',
+          });
+        }
+
+        return res.status(200).json({
+          status: 200,
+          data: [{ message: 'Property Data successfully deleted' }],
+        });
+      });
     });
+  } catch (e) {
+    return res.status(500).json({ status: 500, error: 'Server Error' });
   }
-
-  const index = properties.indexOf(foundProperty);
-
-  properties.splice(index, 1);
-
-  return res.status(200).json({
-    status: 200,
-    data: 'Property data successfully deleted',
-  });
 };
 
 export default deletePropertyAdvert;
