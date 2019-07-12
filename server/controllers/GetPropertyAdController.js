@@ -28,23 +28,32 @@ const specificPropertyAdvert = (req, res) => {
 };
 
 const specificPropertyAdvertType = (req, res) => {
-  const {
-    type,
-  } = req.query;
+  try {
+    const {
+      type,
+    } = req.query;
 
-  const specificPropertyAdsType = properties.filter(property => type === property.type);
+    pool.connect((err, client, done) => {
+      client.query(getPropertyByType(type), (error, result) => {
+        // done();
+        if (result.rowCount === 0) {
+          return res.status(404).json({
+            status: 404,
+            error: 'Property type not found',
+          });
+        }
 
-  if (specificPropertyAdsType === undefined || specificPropertyAdsType.length === 0) {
-    return res.status(404).json({
-      status: 404,
-      error: 'Property type does not exist',
+        const propertyType = result.rows;
+
+        return res.status(200).json({
+          status: 200,
+          data: propertyType,
+        });
+      });
     });
+  } catch (e) {
+    return res.status(500).json({ status: 500, error: 'Server Error' });
   }
-
-  return res.status(200).json({
-    status: 200,
-    data: specificPropertyAdsType,
-  });
 };
 
 const allPropertyAdverts = (req, res) => res.status(200).json({
