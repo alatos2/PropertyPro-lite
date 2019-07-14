@@ -212,7 +212,7 @@ describe('Create Property Advert Controller', () => {
           state: 'Lagos',
           city: 'Alagbado',
           address: '25 Ogurinde Street',
-          price: '25000.00',
+          price: 'fgfgfg',
           image_url: 'https://res.cloudinary.com/daealmvag/image/upload/v1561056992/samples/people/boy-snow-hoodie.jpg',
         })
         .set('Authorization', userToken)
@@ -261,7 +261,7 @@ describe('Create Property Advert Controller', () => {
           city: 'Alagbado',
           address: '25 Ogurinde Street',
           price: 25000.00,
-          imageUrl: 'https://res.cloudinary.com/daealmvag/image/upload/v1561056992/samples/people/boy-snow-hoodie.jpg',
+          image_url: 'https://res.cloudinary.com/daealmvag/image/upload/v1561056992/samples/people/boy-snow-hoodie.jpg',
         })
         .set('Authorization', userToken)
         .expect('Content-Type', /json/)

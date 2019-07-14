@@ -31,12 +31,12 @@ const signin = (req, res) => {
             id: user.id,
             email: user.email,
             type: user.type,
-            isAdmin: user.isadmin,
+            is_admin: user.isadmin,
           };
           const token = utils.jwtToken(tokenData);
 
           const {
-            firstname, lastname, email, id,
+            first_name, last_name, email, id,
           } = user;
 
           return res.status(200).json({
@@ -44,8 +44,8 @@ const signin = (req, res) => {
             data: [{
               token,
               id,
-              firstName: firstname,
-              lastName: lastname,
+              first_name: first_name,
+              last_name: last_name,
               email,
             }],
           });

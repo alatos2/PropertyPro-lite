@@ -3,12 +3,12 @@ import Joi from 'joi';
 const validateRegister = (data) => {
   const schema = {
     email: Joi.string().email({ minDomainAtoms: 2 }).required(),
-    firstName: Joi.string().required().error(_error => ({ message: 'First name is required' })),
-    lastName: Joi.string().required().error(_error => ({ message: 'Last name is required' })),
-    phoneNumber: Joi.string().required().error(_error => ({ message: 'Phone number is required' })),
+    first_name: Joi.string().required().error(_error => ({ message: 'First name is required' })),
+    last_name: Joi.string().required().error(_error => ({ message: 'Last name is required' })),
+    phone_number: Joi.string().required().error(_error => ({ message: 'Phone number is required' })),
     address: Joi.string().required().error(_error => ({ message: 'Address is required' })),
     password: Joi.string().required().error(_error => ({ message: 'Password is required' })),
-    confirmPassword: Joi.string().required().valid(Joi.ref('password')).options({
+    confirm_password: Joi.string().required().valid(Joi.ref('password')).options({
       language: {
         any: {
           allowOnly: 'Passwords do not match',
@@ -36,7 +36,7 @@ const validateCreatePropertyAd = (data) => {
     city: Joi.string().required().error(_error => ({ message: 'City is required' })),
     address: Joi.string().required().error(_error => ({ message: 'Address is required' })),
     type: Joi.string().required().error(_error => ({ message: 'Type is required' })),
-    imageUrl: Joi.string().required().error(_error => ({ message: 'Image Url is required' })),
+    image_url: Joi.string().required().error(_error => ({ message: 'Image Url is required' })),
   };
   return Joi.validate(data, schema);
 };

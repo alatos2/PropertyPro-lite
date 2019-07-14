@@ -13,7 +13,7 @@ import { addProperty } from '../models/queries';
 const createPropertyAd = (req, res) => {
   try {
     const {
-      status, price, state, city, address, type, imageUrl,
+      status, price, state, city, address, type, image_url,
     } = req.body;
 
     const {
@@ -39,8 +39,8 @@ const createPropertyAd = (req, res) => {
       city,
       address,
       type,
-      createdOn: moment().format(),
-      imageUrl,
+      created_on: moment().format(),
+      image_url,
     };
 
     pool.connect((err, client, done) => {
@@ -67,8 +67,8 @@ const createPropertyAd = (req, res) => {
             city: property.city,
             address: property.address,
             price: property.price,
-            createdOn: propertyData.createdOn,
-            imageUrl: propertyData.imageUrl,
+            created_on: propertyData.created_on,
+            image_url: propertyData.image_url,
           }],
         });
       });

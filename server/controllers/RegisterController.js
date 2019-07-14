@@ -13,7 +13,7 @@ import { addUser } from '../models/queries';
 const signup = (req, res) => {
   try {
     const {
-      email, firstName, lastName, password, confirmPassword, phoneNumber, address,
+      email, first_name, last_name, password, confirm_password, phone_number, address,
     } = req.body;
 
     const result = validations.validateRegister(req.body);
@@ -34,7 +34,7 @@ const signup = (req, res) => {
     }
 
     const userData = {
-      email, firstName, lastName, password: utils.hashPassword(password), phoneNumber, address, isAdmin: true,
+      email, first_name, last_name, password: utils.hashPassword(password), phone_number, address, is_admin: true,
     };
 
     pool.connect((err, client, done) => {
@@ -50,16 +50,16 @@ const signup = (req, res) => {
         }
         const user = result.rows[0];
         const tokenData = {
-          id: user.id, firstName: user.firstname, lastName: user.lastname, email: user.email, phoneNumber: user.phoneNumber, address: user.address, isAdmin: true,
+          id: user.id, first_name: user.firstname, last_name: user.lastname, email: user.email, phone_number: user.phoneNumber, address: user.address, is_admin: true,
         };
         const token = utils.jwtToken(tokenData);
         const {
-          firstname, lastname, email, id,
+          first_name, last_name, email, id,
         } = user;
         return res.status(201).json({
           status: 201,
           data: [{
-            token, id, firstName: firstname, lastName: lastname, email,
+            token, id, first_name: first_name, last_name: last_name, email,
           }],
         });
       });

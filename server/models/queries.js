@@ -14,10 +14,10 @@ export const addProperty = data => ({
       city,
       address,
       type,
-      createdOn,
-      imageUrl
+      created_on,
+      image_url
       ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,
-  values: [data.owner, data.status, data.price, data.state, data.city, data.address, data.type, data.createdOn, data.imageUrl],
+  values: [data.owner, data.status, data.price, data.state, data.city, data.address, data.type, data.created_on, data.image_url],
 });
 
 /**
@@ -41,9 +41,9 @@ export const updatePropertyStatus = (status, id) => ({
      * @returns the object query
      */
 
-export const updateProperty = (status, price, state, city, address, type, createdOn, imageUrl, id) => ({
-  text: 'UPDATE property SET status = $1, price = $2, state = $3, city = $4, address = $5, type = $6, createdOn = $7, imageUrl = $8 WHERE id = $9 RETURNING id, status, price, state, city, address, type, imageUrl',
-  values: [status, price, state, city, address, type, createdOn, imageUrl, id],
+export const updateProperty = (status, price, state, city, address, type, created_on, image_url, id) => ({
+  text: 'UPDATE property SET status = $1, price = $2, state = $3, city = $4, address = $5, type = $6, created_on = $7, image_url = $8 WHERE id = $9 RETURNING id, status, price, state, city, address, type, image_url',
+  values: [status, price, state, city, address, type, created_on, image_url, id],
 });
 
 /**
@@ -103,21 +103,21 @@ export const getPropertyByType = type => ({
 export const addUser = data => ({
   text: `INSERT INTO users (     
           email,
-          firstName,
-          lastName,
+          first_name,
+          last_name,
           password,
-          phoneNumber,
+          phone_number,
           address,
-          isAdmin
+          is_admin
           ) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
   values: [
     data.email,
-    data.firstName,
-    data.lastName,
+    data.first_name,
+    data.last_name,
     data.password,
-    data.phoneNumber,
+    data.phone_number,
     data.address,
-    data.isAdmin],
+    data.is_admin],
 });
 
 /**

@@ -8,12 +8,12 @@ const debug = Debug('http');
 const userData = {
   id: 1,
   email: 'dehinde@gmail.com',
-  firstName: 'Lorenzo',
-  lastName: 'Dehinde',
+  first_name: 'Lorenzo',
+  last_name: 'Dehinde',
   password: utils.hashPassword('Dehinde321'),
-  phoneNumber: '08122115577',
+  phone_number: '08122115577',
   address: 'Iyana Iyesi Close',
-  isAdmin: true,
+  is_admin: true,
 };
 
 const propertyData = {
@@ -25,8 +25,8 @@ const propertyData = {
   city: 'Auchi',
   address: '25 Ajuebor street',
   price: 29000.00,
-  createdOn: moment().format(),
-  imageUrl: 'https://res.cloudinary.com/daealmvag/image/upload/v1561569684/house2_kagcwz.jpg',
+  created_on: moment().format(),
+  image_url: 'https://res.cloudinary.com/daealmvag/image/upload/v1561569684/house2_kagcwz.jpg',
 };
 
 /**
@@ -37,12 +37,12 @@ const createTables = () => {
     users (
         id SERIAL PRIMARY KEY,      
         email VARCHAR(128) UNIQUE NOT NULL,
-        firstName VARCHAR(128) NOT NULL,
-        lastName VARCHAR(128) NOT NULL,
+        first_name VARCHAR(128) NOT NULL,
+        last_name VARCHAR(128) NOT NULL,
         password VARCHAR(128) NOT NULL,
-        phoneNumber VARCHAR(128) NOT NULL,
+        phone_number VARCHAR(128) NOT NULL,
         address VARCHAR(128) NOT NULL,
-        isAdmin BOOLEAN
+        is_admin BOOLEAN
     )`;
 
   const property = `CREATE TABLE IF NOT EXISTS
@@ -55,8 +55,8 @@ const createTables = () => {
         city VARCHAR(128) NOT NULL,
         address VARCHAR(128) NOT NULL,
         type VARCHAR(128) NOT NULL,
-        createdOn TIMESTAMP,
-        imageUrl VARCHAR(256) NOT NULL
+        created_on TIMESTAMP,
+        image_url VARCHAR(256) NOT NULL
     )`;
 
   pool.query(users)

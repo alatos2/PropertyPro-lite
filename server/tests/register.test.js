@@ -242,11 +242,11 @@ describe('Register Controller', () => {
         .post('/api/v1/auth/signup')
         .send({
           email: 'alabong@gmail.com',
-          firstName: 'Tosin',
-          lastName: 'Alabi',
+          first_name: 'Tosin',
+          last_name: 'Alabi',
           password: 'didier321',
-          confirmPassword: 'didier321',
-          phoneNumber: '08137733203',
+          confirm_password: 'didier321',
+          phone_number: '08137733203',
           address: '11 Nnamani Adewusi Street',
         })
         .set('Accept', 'application/json')

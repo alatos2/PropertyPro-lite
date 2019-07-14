@@ -5,13 +5,13 @@ import pool from '../models/database';
 const updatePropertyData = (req, res) => {
   try {
     const {
-      status, type, state, city, address, price, imageUrl,
+      status, type, state, city, address, price, image_url,
     } = req.body;
 
     const { id } = req.params;
 
     pool.connect((err, client, done) => {
-      client.query(updateProperty(status, price, state, city, address, type, moment().format(), imageUrl, id), (error, result) => {
+      client.query(updateProperty(status, price, state, city, address, type, moment().format(), image_url, id), (error, result) => {
         done();
         if (result.rowCount === 0) {
           return res.status(404).json({
@@ -31,7 +31,7 @@ const updatePropertyData = (req, res) => {
             address,
             price,
             created_on: moment().format(),
-            imageUrl,
+            image_url,
           },
         });
       });

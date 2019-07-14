@@ -29,7 +29,7 @@ describe('Update Property Data and also mark as SOLD if not available', () => {
           city: 'Umunede',
           address: '25 Ajuebor street',
           type: 'duplex',
-          imageUrl: 'https://res.cloudinary.com/daealmvag/image/upload/v1561569684/house2_kagcwz.jpg',
+          image_url: 'https://res.cloudinary.com/daealmvag/image/upload/v1561569684/house2_kagcwz.jpg',
         })
         .set('Authorization', userToken)
         .expect('Content-Type', /json/)
