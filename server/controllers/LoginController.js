@@ -42,11 +42,11 @@ const signin = (req, res) => {
           return res.status(200).json({
             status: 200,
             data: [{
-              token,
-              id,
+              token: token,
+              id: id,
               first_name: first_name,
               last_name: last_name,
-              email,
+              email: email,
             }],
           });
         }
