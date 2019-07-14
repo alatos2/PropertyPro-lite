@@ -16,22 +16,22 @@ const signup = (req, res) => {
       email, first_name, last_name, password, phone_number, address,
     } = req.body;
 
-    const result = validations.validateRegister(req.body);
-    if (result.error) {
-      const errorMessage = result.error.details[0].message;
-      return res.status(400).json({
-        status: 400,
-        error: errorMessage.replace(/[^a-zA-Z ]/g, ''),
-      });
-    }
+    // const result = validations.validateRegister(req.body);
+    // if (result.error) {
+    //   const errorMessage = result.error.details[0].message;
+    //   return res.status(400).json({
+    //     status: 400,
+    //     error: errorMessage.replace(/[^a-zA-Z ]/g, ''),
+    //   });
+    // }
 
-    const isValid = utils.validateEmail(email);
-    if (!isValid) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Email is not valid',
-      });
-    }
+    // const isValid = utils.validateEmail(email);
+    // if (!isValid) {
+    //   return res.status(400).json({
+    //     status: 400,
+    //     error: 'Email is not valid',
+    //   });
+    // }
 
     const userData = {
       email, first_name, last_name, password: utils.hashPassword(password), phone_number, address, is_admin: true,
