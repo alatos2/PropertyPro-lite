@@ -8,13 +8,13 @@ const validateRegister = (data) => {
     phone_number: Joi.string().required().error(_error => ({ message: 'Phone number is required' })),
     address: Joi.string().required().error(_error => ({ message: 'Address is required' })),
     password: Joi.string().required().error(_error => ({ message: 'Password is required' })),
-    confirm_password: Joi.string().required().valid(Joi.ref('password')).options({
-      language: {
-        any: {
-          allowOnly: 'Passwords do not match',
-        },
-      },
-    }),
+    // confirm_password: Joi.string().required().valid(Joi.ref('password')).options({
+    //   language: {
+    //     any: {
+    //       allowOnly: 'Passwords do not match',
+    //     },
+    //   },
+    // }),
   };
   return Joi.validate(data, schema);
 };

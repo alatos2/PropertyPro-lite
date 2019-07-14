@@ -245,7 +245,6 @@ describe('Register Controller', () => {
           first_name: 'Tosin',
           last_name: 'Alabi',
           password: 'didier321',
-          confirm_password: 'didier321',
           phone_number: '08137733203',
           address: '11 Nnamani Adewusi Street',
         })

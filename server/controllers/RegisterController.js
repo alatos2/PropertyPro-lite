@@ -13,7 +13,7 @@ import { addUser } from '../models/queries';
 const signup = (req, res) => {
   try {
     const {
-      email, first_name, last_name, password, confirm_password, phone_number, address,
+      email, first_name, last_name, password, phone_number, address,
     } = req.body;
 
     const result = validations.validateRegister(req.body);
