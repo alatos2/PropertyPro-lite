@@ -20,16 +20,16 @@ const createPropertyAd = (req, res) => {
       id,
     } = req.decode;
 
-    const result = validations.validateCreatePropertyAd(req.body);
+    // const result = validations.validateCreatePropertyAd(req.body);
 
-    if (result.error) {
-      const errorMessage = result.error.details[0].message;
+    // if (result.error) {
+    //   const errorMessage = result.error.details[0].message;
 
-      return res.status(400).json({
-        status: 400,
-        error: errorMessage.replace(/[^a-zA-Z ]/g, ''),
-      });
-    }
+    //   return res.status(400).json({
+    //     status: 400,
+    //     error: errorMessage.replace(/[^a-zA-Z ]/g, ''),
+    //   });
+    // }
 
     const propertyData = {
       owner: id,
