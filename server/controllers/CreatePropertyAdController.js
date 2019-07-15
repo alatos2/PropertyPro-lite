@@ -1,5 +1,6 @@
 import moment from 'moment';
 import validations from '../middlewares/validations';
+import utils from '../helpers/commons';
 import pool from '../models/database';
 import { addProperty } from '../models/queries';
 
@@ -17,7 +18,7 @@ const createPropertyAd = (req, res) => {
     } = req.body;
 
     const {
-      id,
+      id, email, is_admin,
     } = req.decode;
 
     // const result = validations.validateCreatePropertyAd(req.body);
@@ -39,7 +40,7 @@ const createPropertyAd = (req, res) => {
       city,
       address,
       type,
-      createdOn: moment().format(),
+      created_on: moment().format(),
       image_url,
     };
 
@@ -56,17 +57,26 @@ const createPropertyAd = (req, res) => {
         }
 
         const property = result.rows[0];
+        
+        const tokenData = {
+          id,
+          email,
+          is_admin,
+        };
+
+        const token = utils.jwtToken(tokenData);
 
         return res.status(201).json({
           status: 201,
-          data: [{
+          data: {
+            token: token,
             type: property.type,
             state: property.state,
             city: property.city,
             address: property.address,
             price: property.price,
             image_url: propertyData.image_url,
-          }],
+          },
         });
       });
     });
