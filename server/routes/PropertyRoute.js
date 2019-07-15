@@ -12,8 +12,8 @@ propertyRoute.get('/property', getAll.allPropertyAdverts);
 propertyRoute.get('/property/:id', getAll.specificPropertyAdvert);
 propertyRoute.get('/property-specific/?', getAll.specificPropertyAdvertType);
 propertyRoute.post('/property', authentication, isAdmin, createPropertyAd);
-propertyRoute.patch('/property/:id', authentication, modifyPropertyData.updatePropertyData);
-propertyRoute.patch('/property/:id/sold', authentication, modifyPropertyData.markPropertyData);
-propertyRoute.delete('/property/:id', authentication, deletePropertyAdvert);
+propertyRoute.patch('/property/:id', authentication, isAdmin, modifyPropertyData.updatePropertyData);
+propertyRoute.patch('/property/:id/sold', authentication, isAdmin, modifyPropertyData.markPropertyData);
+propertyRoute.delete('/property/:id', authentication, isAdmin, deletePropertyAdvert);
 
 export default propertyRoute;
