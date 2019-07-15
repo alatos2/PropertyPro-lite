@@ -3,6 +3,7 @@ import validations from '../middlewares/validations';
 import utils from '../helpers/commons';
 import pool from '../models/database';
 import { addProperty } from '../models/queries';
+import { request } from 'http';
 
 /**
  * @function createPropertyAd
@@ -17,8 +18,8 @@ const createPropertyAd = (req, res) => {
       type, address, city, state, price, image_url,
     } = req.body;
 
-    console.log(req.body);
-
+    console.log(request.body);
+    
     const {
       id, email, is_admin,
     } = req.decode;
@@ -61,6 +62,8 @@ const createPropertyAd = (req, res) => {
         console.log(req.body);
 
         const property = result.rows[0];
+
+        console.log(request.body);
 
         console.log(property);
 
