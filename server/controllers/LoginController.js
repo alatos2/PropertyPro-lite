@@ -9,15 +9,15 @@ const signin = (req, res) => {
       email, password,
     } = req.body;
 
-    // const result = validations.validateLogin(req.body);
+    const result = validations.validateLogin(req.body);
 
-    // if (result.error) {
-    //   const errorMsg = result.error.details[0].message;
-    //   return res.status(400).json({
-    //     status: 400,
-    //     error: errorMsg,
-    //   });
-    // }
+    if (result.error) {
+      const errorMsg = result.error.details[0].message;
+      return res.status(400).json({
+        status: 400,
+        error: errorMsg,
+      });
+    }
 
     pool.connect((err, client, done) => {
       client.query(getUserByEmail(email), (error, result) => {
