@@ -14,9 +14,11 @@ import { addProperty } from '../models/queries';
 const createPropertyAd = (req, res) => {
   try {
     const {
-      price, state, city, address, type, image_url,
+      token, type, address, city, state, price, image_url,
     } = req.body;
 
+    console.log(req.body);
+    
     const {
       id, email, is_admin,
     } = req.decode;
