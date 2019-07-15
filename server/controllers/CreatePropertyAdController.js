@@ -14,7 +14,7 @@ import { addProperty } from '../models/queries';
 const createPropertyAd = (req, res) => {
   try {
     const {
-      status, price, state, city, address, type, image_url,
+      price, state, city, address, type, image_url,
     } = req.body;
 
     const {
@@ -34,7 +34,7 @@ const createPropertyAd = (req, res) => {
 
     const propertyData = {
       owner: id,
-      status,
+      status: 'available',
       price,
       state,
       city,
@@ -59,24 +59,18 @@ const createPropertyAd = (req, res) => {
         console.log(req.body);
 
         const property = result.rows[0];
-        
-        const tokenData = {
-          id,
-          email,
-          is_admin,
-        };
-
-        const propertyToken = utils.jwtToken(tokenData);
 
         return res.status(201).json({
           status: 201,
           data: {
-            token: propertyToken,
+            id: property.id,
+            status: property.status,
             type: property.type,
             state: property.state,
             city: property.city,
             address: property.address,
             price: property.price,
+            created_on: property.created_on,
             image_url: propertyData.image_url,
           },
         });
