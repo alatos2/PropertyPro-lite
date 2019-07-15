@@ -33,7 +33,7 @@ const signin = (req, res) => {
             is_admin: user.is_admin,
           };
           const token = utils.jwtToken(tokenData);
-
+          
           const {
             first_name, last_name, email, id,
           } = user;
