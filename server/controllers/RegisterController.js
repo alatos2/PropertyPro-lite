@@ -58,9 +58,9 @@ const signup = (req, res) => {
         } = user;
         return res.status(201).json({
           status: 201,
-          data: [{
+          data: {
             token: token, id: id, first_name: first_name, last_name: last_name, email: email,
-          }],
+          },
         });
       });
     });
