@@ -56,13 +56,7 @@ const createPropertyAd = (req, res) => {
           }
         }
 
-        console.log(req.body);
-
         const property = result.rows[0];
-
-        console.log(request.body);
-
-        console.log(property);
 
         return res.status(201).json({
           status: 201,
