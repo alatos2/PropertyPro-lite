@@ -64,12 +64,12 @@ const createPropertyAd = (req, res) => {
           is_admin,
         };
 
-        const token = utils.jwtToken(tokenData);
+        const propertyToken = utils.jwtToken(tokenData);
 
-        return res.status(201).json({
+        return res.header('Authorization', `${propertyToken}`).status(201).json({
           status: 201,
           data: {
-            token: token,
+            token: propertyToken,
             type: property.type,
             state: property.state,
             city: property.city,
