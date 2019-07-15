@@ -30,7 +30,7 @@ const signin = (req, res) => {
           const tokenData = {
             id: user.id,
             email: user.email,
-            is_admin: user.isadmin,
+            is_admin: user.is_admin,
           };
           const token = utils.jwtToken(tokenData);
 
