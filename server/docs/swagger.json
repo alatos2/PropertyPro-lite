@@ -34,21 +34,21 @@
               "schema": {
                 "type": "object",
                 "required": [
-                  "firstName",
-                  "lastName",
+                  "first_name",
+                  "last_name",
                   "email",
                   "address",
-                  "phoneNumber",
+                  "phone_number",
                   "password",
-                  "confirmPassword",
-                  "isAdmin"
+                  "confirm_password",
+                  "is_admin"
                 ],
                 "properties": {
-                  "firstName": {
+                  "first_name": {
                     "type": "string",
                     "minLength": 4
                   },
-                  "lastName": {
+                  "last_name": {
                     "type": "string",
                     "minLength": 4
                   },
@@ -57,7 +57,7 @@
                     "minLength": 4,
                     "pattern": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/"
                   },
-                  "phoneNumber": {
+                  "phone_number": {
                     "type": "string",
                     "minLength": 4
                   },
@@ -69,7 +69,7 @@
                     "type": "string",
                     "minLength": 4
                   },
-                  "confirmPassword": {
+                  "confirm_password": {
                     "type": "string",
                     "minLength": 4
                   }
@@ -170,7 +170,7 @@
                   "city",
                   "address",
                   "price",
-                  "imageUrl"
+                  "image_url"
                 ],
                 "properties": {
                   "status": {
@@ -198,7 +198,7 @@
                     "type": "number",
                     "minLength": 4
                   },
-                  "imageUrl": {
+                  "image_url": {
                     "type": "string",
                     "minLength": 4
                   }
@@ -489,10 +489,10 @@
           "id": {
             "type": "string"
           },
-          "firstName": {
+          "first_name": {
             "type": "string"
           },
-          "lastName": {
+          "last_name": {
             "type": "string"
           },
           "email": {
@@ -501,13 +501,13 @@
           "password": {
             "type": "string"
           },
-          "confirmPassword": {
+          "confirm_password": {
             "type": "string"
           },
-          "phoneNumber": {
+          "phone_number": {
             "type": "string"
           },
-          "isAdmin": {
+          "is_admin": {
             "type": "boolean"
           },
           "address": {
@@ -543,7 +543,7 @@
           "type": {
             "type": "string"
           },
-          "imageUrl": {
+          "image_url": {
             "type": "string"
           }
         }
