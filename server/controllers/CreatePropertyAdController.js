@@ -56,6 +56,8 @@ const createPropertyAd = (req, res) => {
           }
         }
 
+        console.log(req.body);
+
         const property = result.rows[0];
         
         const tokenData = {
