@@ -7,7 +7,9 @@ const { SECRET } = process.env;
 
 const authentication = (req, res, next) => {
   try {
-    const header = req.headers.authorization || req.headers.token;
+    // const header = req.headers.authorization || req.headers.token;
+
+    const header = req.header('token');
     if (!header || header === '') return res.status(401).json({ status: 401, error: 'Authentication failed' });
 
     const token = jwt.verify(header, SECRET);

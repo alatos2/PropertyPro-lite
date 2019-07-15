@@ -66,7 +66,7 @@ const createPropertyAd = (req, res) => {
 
         const propertyToken = utils.jwtToken(tokenData);
 
-        return res.header('Authorization', `${propertyToken}`).status(201).json({
+        return res.header('authorization', `${propertyToken}`).status(201).json({
           status: 201,
           data: {
             token: propertyToken,
