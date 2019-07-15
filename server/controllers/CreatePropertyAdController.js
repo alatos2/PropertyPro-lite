@@ -13,7 +13,7 @@ import { addProperty } from '../models/queries';
 const createPropertyAd = (req, res) => {
   try {
     const {
-      status, price, state, city, address, type, image_url,
+      price, state, city, address, type, image_url,
     } = req.body;
 
     const {
@@ -33,7 +33,7 @@ const createPropertyAd = (req, res) => {
 
     const propertyData = {
       owner: id,
-      status,
+      status: 'available',
       price,
       state,
       city,
@@ -59,7 +59,7 @@ const createPropertyAd = (req, res) => {
 
         return res.status(201).json({
           status: 201,
-          data: [{
+          data: {
             id: property.id,
             status: property.status,
             type: property.type,
@@ -69,7 +69,7 @@ const createPropertyAd = (req, res) => {
             price: property.price,
             created_on: propertyData.created_on,
             image_url: propertyData.image_url,
-          }],
+          },
         });
       });
     });
