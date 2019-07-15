@@ -8,10 +8,11 @@
    */
 // eslint-disable-next-line import/prefer-default-export
 export const isAdmin = (req, res, next) => {
-  const { id, email, is_admin } = req.decode;
+  const { is_admin } = req.decode;
   if (is_admin) {
+    console.log(is_admin);
     next();
-  } else { console.log(is_admin);
+  } else {
     return res.status(403).json({
       status: 403,
       error: 'Forbidden: Access is denied',

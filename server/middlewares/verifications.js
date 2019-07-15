@@ -7,7 +7,7 @@ const { SECRET } = process.env;
 
 const authentication = (req, res, next) => {
   try {
-    const header = req.headers.authorization;
+    const header = req.headers.authorization || req.headers.token || req.header('token');
     
     if (!header || header === '') return res.status(401).json({ status: 401, error: 'Authentication failed' });
 
