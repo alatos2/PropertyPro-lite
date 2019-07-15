@@ -4,6 +4,6 @@ import authentication from '../middlewares/verifications';
 
 const loginRoute = express.Router();
 
-loginRoute.post('/auth/signin', signin);
+loginRoute.post('/auth/signin', authentication, signin);
 
 export default loginRoute;
