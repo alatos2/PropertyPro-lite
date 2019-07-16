@@ -61,12 +61,14 @@ const allPropertyAdverts = (req, res) => {
     pool.connect((err, client, done) => {
       client.query(getProperties(), (error, result) => {
         done();
-
-        const properties = result.rows;
+        if (result.rowCount === 0) {
+          return res.status(404).json({
+            status: 404,
+            error: 'Property Id not found',
+          });
+        }
 
         for (let i = 0; i < result.rowCount; i++) {
-
-          console.log(result.rows[i].owner_email);
 
           return res.status(200).json({
             status: 200,
