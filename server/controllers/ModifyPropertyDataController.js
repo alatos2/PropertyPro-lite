@@ -23,7 +23,7 @@ const updatePropertyData = (req, res) => {
         return res.status(200).json({
           status: 200,
           data: {
-            id,
+            id: 1,
             status,
             type,
             state,
