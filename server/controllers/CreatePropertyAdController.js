@@ -21,16 +21,16 @@ const createPropertyAd = (req, res) => {
       id, email, is_admin,
     } = req.decode;
 
-    const result = validations.validateCreatePropertyAd(req.body);
+    // const result = validations.validateCreatePropertyAd(req.body);
 
-    if (result.error) {
-      const errorMessage = result.error.details[0].message;
+    // if (result.error) {
+    //   const errorMessage = result.error.details[0].message;
 
-      return res.status(400).json({
-        status: 400,
-        error: errorMessage.replace(/[^a-zA-Z ]/g, ''),
-      });
-    }
+    //   return res.status(400).json({
+    //     status: 400,
+    //     error: errorMessage.replace(/[^a-zA-Z ]/g, ''),
+    //   });
+    // }
 
     // const propertyData = {
     //   owner: id,
@@ -44,6 +44,15 @@ const createPropertyAd = (req, res) => {
     //   image_url,
     // };
 
+    const propertyData = {
+      type,
+      address,
+      city,
+      state,
+      price,
+      image_url,
+    };
+
     pool.connect((err, client, done) => {
       client.query(addProperty(propertyData), (error, result) => {
         done();
@@ -55,8 +64,11 @@ const createPropertyAd = (req, res) => {
             });
           }
         }
-
+        console.log(req.body);
+        console.log(result.rows[0]);
         const property = result.rows[0];
+
+        console.log(property);
 
         // return res.status(201).json({
         //   status: 201,
