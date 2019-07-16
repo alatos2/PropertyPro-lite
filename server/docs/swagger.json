@@ -196,9 +196,6 @@
                   "image_url": {
                     "type": "string",
                     "minLength": 4
-                  },
-                  "owner_email": {
-                    "type": "string"
                   }
                 }
               }
@@ -539,9 +536,6 @@
             "type": "string"
           },
           "image_url": {
-            "type": "string"
-          },
-          "owner_email": {
             "type": "string"
           }
         }
