@@ -49,7 +49,7 @@ const createTables = () => {
     property (
         id SERIAL PRIMARY KEY,
         owner INT NOT NULL,
-        status VARCHAR(128) NOT NULL,
+        status VARCHAR(128) NULL,
         price float8,
         state VARCHAR(128) NOT NULL,
         city VARCHAR(128) NOT NULL,
