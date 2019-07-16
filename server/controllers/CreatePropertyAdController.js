@@ -32,17 +32,17 @@ const createPropertyAd = (req, res) => {
       });
     }
 
-    const propertyData = {
-      owner: id,
-      status: 'available',
-      price,
-      state,
-      city,
-      address,
-      type,
-      created_on: moment().format(),
-      image_url,
-    };
+    // const propertyData = {
+    //   owner: id,
+    //   status: 'available',
+    //   price,
+    //   state,
+    //   city,
+    //   address,
+    //   type,
+    //   created_on: moment().format(),
+    //   image_url,
+    // };
 
     pool.connect((err, client, done) => {
       client.query(addProperty(propertyData), (error, result) => {
@@ -58,6 +58,19 @@ const createPropertyAd = (req, res) => {
 
         const property = result.rows[0];
 
+        // return res.status(201).json({
+        //   status: 201,
+        //   data: {
+        //     id: property.id,
+        //     status: property.status,
+        //     type: property.type,
+        //     state: property.state,
+        //     city: property.city,
+        //     address: property.address,
+        //     price: property.price,
+        //     created_on: property.created_on,
+        //     image_url: propertyData.image_url,
+        //   },
         return res.status(201).json({
           status: 201,
           data: {
