@@ -77,7 +77,7 @@ const createPropertyAd = (req, res) => {
         return res.status(201).json({
           status: 201,
           data: {
-            id: 6,
+            id: 13,
             owner_id: propertyData.owner_id,
             status: propertyData.status,
             type: propertyData.type,
