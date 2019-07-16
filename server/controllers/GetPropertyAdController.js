@@ -66,7 +66,7 @@ const allPropertyAdverts = (req, res) => {
         return res.status(200).json({
           status: 200,
           data: [{
-            owner_email: properties.email,
+            owner_email: properties.owner_email,
           }],
         });
       });
