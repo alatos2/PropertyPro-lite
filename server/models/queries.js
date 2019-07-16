@@ -47,6 +47,20 @@ export const updateProperty = (status, price, state, city, address, type, create
   values: [status, price, state, city, address, type, created_on, image_url, owner_email, id],
 });
 
+
+/**
+   * @name updatePropertyPrice
+   * @description - updates property status
+   * @param {string} status
+   * @param {int} id
+   * @returns the object query
+   */
+
+export const updatePropertyPrice = (price, id) => ({
+  text: 'UPDATE property SET price = $1 WHERE id = $2 RETURNING id, price',
+  values: [price, id],
+});
+
 /**
      * @name DeleteProperty
      * @description - deletes a property

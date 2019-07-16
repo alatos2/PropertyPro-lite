@@ -1,11 +1,11 @@
 import moment from 'moment';
-import { updateProperty, updatePropertyStatus } from '../models/queries';
+import { updateProperty, updatePropertyStatus, updatePropertyPrice } from '../models/queries';
 import pool from '../models/database';
 
 const updatePropertyData = (req, res) => {
   try {
     const {
-      status, type, state, city, address, price, image_url,
+      price,
     } = req.body;
 
     const { id } = req.params;
@@ -15,7 +15,7 @@ const updatePropertyData = (req, res) => {
     } = req.decode;
 
     pool.connect((err, client, done) => {
-      client.query(updateProperty(status, price, state, city, address, type, moment().format(), image_url, email, id), (error, result) => {
+      client.query(updatePropertyPrice(price, id), (error, result) => {
         done();
         if (result.rowCount === 0) {
           return res.status(404).json({
@@ -27,14 +27,8 @@ const updatePropertyData = (req, res) => {
         return res.status(200).json({
           status: 200,
           data: {
-            status,
-            type,
-            state,
-            city,
-            address,
             price,
             created_on: moment().format(),
-            image_url,
             owner_email: email,
           },
         });
