@@ -59,6 +59,7 @@ const markPropertyData = (req, res) => {
           data: {
             id,
             status: 'sold',
+            created_on: moment().format(),
           },
         });
       });

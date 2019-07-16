@@ -24,7 +24,7 @@ const deletePropertyAdvert = (req, res) => {
 
         return res.status(200).json({
           status: 200,
-          data: [{ message: 'Property Data successfully deleted' }],
+          data: { message: 'Property Data successfully deleted' },
         });
       });
     });
