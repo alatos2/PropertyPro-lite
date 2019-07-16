@@ -44,7 +44,7 @@ const validateCreatePropertyAd = (data) => {
     type: Joi.string().required().error(_error => ({ message: 'Type is required' })),
     image_url: Joi.string().required().error(_error => ({ message: 'Image Url is required' })),
   };
-  return Joi.validate(data, schema);
+  return Joi.validate(data, schema, validationOptions);
 };
 
 const validations = {
