@@ -61,16 +61,20 @@ const allPropertyAdverts = (req, res) => {
     pool.connect((err, client, done) => {
       client.query(getProperties(), (error, result) => {
         done();
+
         const properties = result.rows;
 
-        console.log(properties);
+        for (let i = 0; i < result.rowCount; i++) {
 
-        return res.status(200).json({
-          status: 200,
-          data: [{
-            properties,
-          }],
-        });
+          console.log(result.rows[i].owner_email);
+
+          return res.status(200).json({
+            status: 200,
+            data: [{
+              owner_email: result.rows[i].owner_email,
+            }],
+          });
+        }
       });
     });
   } catch (e) {
