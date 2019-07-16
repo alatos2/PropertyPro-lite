@@ -14,7 +14,7 @@ import { addProperty } from '../models/queries';
 const createPropertyAd = (req, res) => {
   try {
     const {
-      status, type, address, city, state, price, image_url,
+      type, address, city, state, price, image_url,
     } = req.body;
 
     const {
@@ -36,7 +36,7 @@ const createPropertyAd = (req, res) => {
 
     const propertyData = {
       owner: id,
-      status,
+      status: 'available',
       price,
       state,
       city,
