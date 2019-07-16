@@ -11,7 +11,7 @@ const propertyRoute = express.Router();
 propertyRoute.post('/property', authentication, isAdmin, createPropertyAd);
 propertyRoute.patch('/property/:id', authentication, isAdmin, modifyPropertyData.updatePropertyData);
 propertyRoute.patch('/property/:id/sold', authentication, isAdmin, modifyPropertyData.markPropertyData);
-propertyRoute.get('/property', getAll.allPropertyAdverts);
+propertyRoute.get('/property', authentication, isAdmin, getAll.allPropertyAdverts);
 propertyRoute.get('/property/:id', getAll.specificPropertyAdvert);
 propertyRoute.get('/property-specific/?', getAll.specificPropertyAdvertType);
 propertyRoute.delete('/property/:id', authentication, deletePropertyAdvert);
