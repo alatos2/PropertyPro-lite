@@ -48,7 +48,7 @@ const createTables = () => {
   const property = `CREATE TABLE IF NOT EXISTS
     property (
         id SERIAL PRIMARY KEY,
-        owner INT NOT NULL,
+        owner_id INT NOT NULL,
         status VARCHAR(128) NULL,
         price float8,
         state VARCHAR(128) NOT NULL,
