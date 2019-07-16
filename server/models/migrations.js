@@ -18,7 +18,7 @@ const userData = {
 
 const propertyData = {
   id: 2,
-  owner: 1,
+  owner_id: 1,
   status: 'available',
   type: 'mansion',
   state: 'Rivers',
@@ -27,6 +27,7 @@ const propertyData = {
   price: 29000.00,
   created_on: moment().format(),
   image_url: 'https://res.cloudinary.com/daealmvag/image/upload/v1561569684/house2_kagcwz.jpg',
+  owner_email: 'dehinde@gmail.com',
 };
 
 /**
@@ -46,18 +47,19 @@ const createTables = () => {
     )`;
 
   const property = `CREATE TABLE IF NOT EXISTS
-    property (
-        id SERIAL PRIMARY KEY,
-        owner INT NOT NULL,
-        status VARCHAR(128) NOT NULL,
-        price float8,
-        state VARCHAR(128) NOT NULL,
-        city VARCHAR(128) NOT NULL,
-        address VARCHAR(128) NOT NULL,
-        type VARCHAR(128) NOT NULL,
-        created_on TIMESTAMP,
-        image_url VARCHAR(256) NOT NULL
-    )`;
+  property (
+      id SERIAL PRIMARY KEY,
+      owner_id INT NOT NULL,
+      status VARCHAR(128) NULL,
+      price float8,
+      state VARCHAR(128) NOT NULL,
+      city VARCHAR(128) NOT NULL,
+      address VARCHAR(128) NOT NULL,
+      type VARCHAR(128) NOT NULL,
+      created_on TIMESTAMP,
+      image_url VARCHAR(256) NOT NULL,
+      owner_email VARCHAR(256) NOT NULL
+  )`;
 
   pool.query(users)
     .then((response) => {

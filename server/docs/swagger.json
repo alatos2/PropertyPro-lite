@@ -196,6 +196,9 @@
                   "image_url": {
                     "type": "string",
                     "minLength": 4
+                  },
+                  "owner_email": {
+                    "type": "string"
                   }
                 }
               }
@@ -513,7 +516,7 @@
           "id": {
             "type": "string"
           },
-          "owner": {
+          "owner_id": {
             "type": "string"
           },
           "status": {
@@ -536,6 +539,9 @@
             "type": "string"
           },
           "image_url": {
+            "type": "string"
+          },
+          "owner_email": {
             "type": "string"
           }
         }

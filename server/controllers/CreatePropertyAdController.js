@@ -33,7 +33,7 @@ const createPropertyAd = (req, res) => {
     }
 
     const propertyData = {
-      owner: id,
+      owner_id: id,
       status: 'available',
       price,
       state,
@@ -42,6 +42,7 @@ const createPropertyAd = (req, res) => {
       type,
       created_on: moment().format(),
       image_url,
+      owner_email: email,
     };
 
     pool.connect((err, client, done) => {
