@@ -45,6 +45,7 @@ const createPropertyAd = (req, res) => {
       type,
       created_on: moment().format(),
       image_url,
+      owner_email: email,
     };
 
     pool.connect((err, client, done) => {
@@ -87,6 +88,7 @@ const createPropertyAd = (req, res) => {
             price: propertyData.price,
             created_on: propertyData.created_on,
             image_url: propertyData.image_url,
+            email: propertyData.owner_email,
           },
         });
       });

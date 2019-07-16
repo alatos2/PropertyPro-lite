@@ -56,7 +56,8 @@ const createTables = () => {
         address VARCHAR(128) NOT NULL,
         type VARCHAR(128) NOT NULL,
         created_on TIMESTAMP,
-        image_url VARCHAR(256) NOT NULL
+        image_url VARCHAR(256) NOT NULL,
+        owner_email VARCHAR(256) NOT NULL
     )`;
 
   pool.query(users)
