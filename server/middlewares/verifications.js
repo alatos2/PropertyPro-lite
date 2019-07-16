@@ -17,6 +17,8 @@ const authentication = (req, res, next) => {
 
     req.decode = token;
 
+    console.log(req.body);
+
     next();
   } catch (e) {
     return res.status(401).json({ status: 401, error: 'Invalid token!' });
