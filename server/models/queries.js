@@ -42,9 +42,9 @@ export const updatePropertyStatus = (status, id) => ({
      * @returns the object query
      */
 
-export const updateProperty = (status, price, state, city, address, type, created_on, image_url, id) => ({
-  text: 'UPDATE property SET status = $1, price = $2, state = $3, city = $4, address = $5, type = $6, created_on = $7, image_url = $8 WHERE id = $9 RETURNING id, status, price, state, city, address, type, created_on, image_url',
-  values: [status, price, state, city, address, type, created_on, image_url, id],
+export const updateProperty = (status, price, state, city, address, type, created_on, image_url, owner_email, id) => ({
+  text: 'UPDATE property SET status = $1, price = $2, state = $3, city = $4, address = $5, type = $6, created_on = $7, image_url = $8, owner_email = $9 WHERE id = $10 RETURNING id, status, price, state, city, address, type, created_on, image_url, owner_email',
+  values: [status, price, state, city, address, type, created_on, image_url, owner_email, id],
 });
 
 /**

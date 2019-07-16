@@ -10,8 +10,12 @@ const updatePropertyData = (req, res) => {
 
     const { id } = req.params;
 
+    const {
+      email, is_admin,
+    } = req.decode;
+
     pool.connect((err, client, done) => {
-      client.query(updateProperty(status, price, state, city, address, type, moment().format(), image_url, id), (error, result) => {
+      client.query(updateProperty(status, price, state, city, address, type, moment().format(), image_url, email, id), (error, result) => {
         done();
         if (result.rowCount === 0) {
           return res.status(404).json({
@@ -31,6 +35,7 @@ const updatePropertyData = (req, res) => {
             price,
             created_on: moment().format(),
             image_url,
+            owner_email: email,
           },
         });
       });
