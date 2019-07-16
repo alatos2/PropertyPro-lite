@@ -14,29 +14,29 @@ import { addProperty } from '../models/queries';
 const createPropertyAd = (req, res) => {
   try {
     const {
-      type, address, city, state, price, image_url,
+      status, type, address, city, state, price, image_url,
     } = req.body;
 
     const {
       id, email, is_admin,
     } = req.decode;
 
-    // const result = validations.validateCreatePropertyAd(req.body);
+    const result = validations.validateCreatePropertyAd(req.body);
 
-    // if (result.error) {
-    //   const errorMessage = result.error.details[0].message;
+    if (result.error) {
+      const errorMessage = result.error.details[0].message;
 
-    //   return res.status(400).json({
-    //     status: 400,
-    //     error: errorMessage.replace(/[^a-zA-Z ]/g, ''),
-    //   });
-    // }
+      return res.status(400).json({
+        status: 400,
+        error: errorMessage.replace(/[^a-zA-Z ]/g, ''),
+      });
+    }
 
     console.log(req.body);
 
     const propertyData = {
       owner: id,
-      status: 'available',
+      status,
       price,
       state,
       city,
@@ -76,7 +76,6 @@ const createPropertyAd = (req, res) => {
         return res.status(201).json({
           status: 201,
           data: {
-            id: req.id,
             owner: propertyData.owner,
             status: propertyData.status,
             type: propertyData.type,

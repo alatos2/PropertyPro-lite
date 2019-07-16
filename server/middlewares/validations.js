@@ -1,5 +1,11 @@
 import Joi from 'joi';
 
+
+const validationOptions = {
+  allowUnknown: true, // allow unknown keys that will be ignored
+  stripUnknown: true, // remove unknown keys from the validated data
+};
+
 const validateRegister = (data) => {
   const schema = {
     email: Joi.string().email({ minDomainAtoms: 2 }).required(),
@@ -16,7 +22,7 @@ const validateRegister = (data) => {
     //   },
     // }),
   };
-  return Joi.validate(data, schema);
+  return Joi.validate(data, schema, validationOptions);
 };
 
 const validateLogin = (data) => {
@@ -24,13 +30,13 @@ const validateLogin = (data) => {
     email: Joi.string().email({ minDomainAtoms: 2 }).required(),
     password: Joi.string().required().error(_error => ({ message: 'Password is required' })),
   };
-  return Joi.validate(data, schema);
+  return Joi.validate(data, schema, validationOptions);
 };
 
 
 const validateCreatePropertyAd = (data) => {
   const schema = {
-    // status: Joi.string().required().error(_error => ({ message: 'Status is required' })),
+    status: Joi.string().required().error(_error => ({ message: 'Status is required' })),
     price: Joi.number().required(),
     state: Joi.string().required().error(_error => ({ message: 'State is required' })),
     city: Joi.string().required().error(_error => ({ message: 'City is required' })),
@@ -38,7 +44,7 @@ const validateCreatePropertyAd = (data) => {
     type: Joi.string().required().error(_error => ({ message: 'Type is required' })),
     image_url: Joi.string().required().error(_error => ({ message: 'Image Url is required' })),
   };
-  return Joi.validate(data, schema);
+  return Joi.validate(data, schema, validationOptions);
 };
 
 const validations = {

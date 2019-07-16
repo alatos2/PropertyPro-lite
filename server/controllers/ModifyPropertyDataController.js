@@ -4,13 +4,13 @@ import pool from '../models/database';
 
 const updatePropertyData = (req, res) => {
   try {
-    // const {
-    //   status, type, state, city, address, price, image_url,
-    // } = req.body;
-
     const {
-      price,
+      status, type, state, city, address, price, image_url,
     } = req.body;
+
+    // const {
+    //   price,
+    // } = req.body;
 
     const { id } = req.params;
 
@@ -18,7 +18,7 @@ const updatePropertyData = (req, res) => {
     console.log(req.body);
 
     pool.connect((err, client, done) => {
-      client.query(updateProperty('Available', price, 'Lagos', 'Ikoyi', 'Ruxton street', 'Duplex', moment().format(), 'image_url', id), (error, result) => {
+      client.query(updateProperty(status, type, state, city, address, price, moment().format(), image_url, id), (error, result) => {
         done();
         if (result.rowCount === 0) {
           return res.status(404).json({
@@ -31,14 +31,14 @@ const updatePropertyData = (req, res) => {
           status: 200,
           data: {
             id,
-            status: 'Available',
-            type: '',
-            state: 'Lagos',
-            city: 'Ikoyi',
-            address: 'Ruxton street',
+            status,
+            type,
+            state,
+            city,
+            address,
             price,
             created_on: moment().format(),
-            image_url: 'image_url',
+            image_url,
           },
         });
       });
