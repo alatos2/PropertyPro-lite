@@ -36,7 +36,7 @@ const validateLogin = (data) => {
 
 const validateCreatePropertyAd = (data) => {
   const schema = {
-    status: Joi.string().required().error(_error => ({ message: 'Status is required' })),
+    status: Joi.string().error(_error => ({ message: 'Status is required' })),
     price: Joi.number().required(),
     state: Joi.string().required().error(_error => ({ message: 'State is required' })),
     city: Joi.string().required().error(_error => ({ message: 'City is required' })),
