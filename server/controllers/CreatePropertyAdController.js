@@ -1,6 +1,5 @@
 import moment from 'moment';
 import validations from '../middlewares/validations';
-import utils from '../helpers/commons';
 import pool from '../models/database';
 import { addProperty } from '../models/queries';
 
@@ -36,7 +35,6 @@ const createPropertyAd = (req, res) => {
 
     const propertyData = {
       owner: id,
-      status: 'available',
       price,
       state,
       city,

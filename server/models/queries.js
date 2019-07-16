@@ -8,7 +8,6 @@
 export const addProperty = data => ({
   text: `INSERT INTO property (
       owner,
-      status,
       price,
       state,
       city,
@@ -16,8 +15,8 @@ export const addProperty = data => ({
       type,
       created_on,
       image_url
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,
-  values: [data.owner, data.status, data.price, data.state, data.city, data.address, data.type, data.created_on, data.image_url],
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
+  values: [data.owner, data.price, data.state, data.city, data.address, data.type, data.created_on, data.image_url],
 });
 
 /**
